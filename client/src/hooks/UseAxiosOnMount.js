@@ -7,7 +7,7 @@ export const useAxiosOnMount = (url) => {
   const [error, setError] = useState(null)
 
   useEffect(()=>{
-    
+    getData ()
   }, [])
 
   const getData = async () => {

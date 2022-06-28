@@ -30,10 +30,12 @@ categories = [
   end
   
   50.times do
+    sold = rand(3) === 2
     p = Product.create(
       price: Faker::Commerce.price,
       description: Faker::Commerce.product_name,
       category: Faker::Commerce.department,
+      sold: sold,
       seller_id: s.id
   )
   end

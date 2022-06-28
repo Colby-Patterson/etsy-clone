@@ -8,15 +8,17 @@ import NoMatch from './components/shared/NoMatch'
 import FetchUser from './components/auth/FetchUser';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UserAccount from './components/shared/UserAccount';
+import ProductsForSale from './pages/ProductsForSale';
 
 function App() {
   return (
     <>
       <Navbar />
       <>
-      <FetchUser>
+      {/* <FetchUser> */}
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/productsforsale' element={<ProductsForSale />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route element={<ProtectedRoute />}>
@@ -24,7 +26,7 @@ function App() {
           </Route>
           <Route path='/*' element={<NoMatch />} />
         </Routes>
-        </FetchUser>
+        {/* </FetchUser> */}
       </>
     </>
   );

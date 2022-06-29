@@ -8,7 +8,8 @@ import NoMatch from './components/shared/NoMatch'
 import FetchUser from './components/auth/FetchUser';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UserAccount from './components/shared/UserAccount';
-import ProductsForSale from './pages/ProductsForSale';
+import ProductsForSale from './pages/products/ProductsForSale';
+
 
 function App() {
   return (

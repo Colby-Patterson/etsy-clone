@@ -1,32 +1,57 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import Seller from "./Seller"
 
 const ProductsForSale = () => {
-  const [productProperties, setProductProperties] = useState([])
+  const [sellerProperties, setSellerProperties] = useState([])
   useEffect(()=> {
-    getProductProperties()
+    getSellerProperties()
   }, [])
 
   const normalizeRawData = (rawData) => {
     const sellerIDs = rawData.map((rd)=> rd.seller_id)
     const uniqueIDs = [...new Set(sellerIDs)]
     console.log(uniqueIDs)
+    return uniqueIDs.map((id)=> {
+      let products = rawData.filter((p)=> p.seller_id === id)
+      let cleanedProducts = products.map((p)=> {
+        return {
+          id: p.seller_id,
+          price: p.price,
+          description: p.description,
+          category: p.category
+        }
+      })
+      return {
+        email: products[0].email,
+        name: `${products[0].first_name} ${products[0].last_name}`,
+        products: cleanedProducts,
+      }
+    })
   }
 
-  const getProductProperties = async () => {
+  const getSellerProperties = async () => {
     try {
       let res = await axios.get("/api/products")
-      normalizeRawData(res.data)
-      setProductProperties(res.data)
+      let normalizedData = normalizeRawData(res.data)
+      setSellerProperties(normalizedData)
     } catch(err) {
       alert("Error occurred in getProductProperties")
     }
   }
 
+  const renderSellerProperties = () => {
+    return sellerProperties.map(p => {
+      console.log(p)
+      return <Seller key={p.id} {...p} />
+    })
+  }
+
   return (
     <div>
       <h1>Products For Sale</h1>
-      <p>{JSON.stringify(productProperties)}</p>
+      {renderSellerProperties()}
+      {/* <p>{JSON.stringify(productProperties)}</p> */}
     </div>
   )
 }

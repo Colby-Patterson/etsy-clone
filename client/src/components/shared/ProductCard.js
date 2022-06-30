@@ -1,4 +1,4 @@
-import { Card, Icon } from "semantic-ui-react"
+import { Card } from "semantic-ui-react"
 
 const ProductCard = ({description}) => {
   return (

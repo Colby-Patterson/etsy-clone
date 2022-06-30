@@ -8,7 +8,8 @@
 categories = [
   'Crafts',
   'Art',
-  'Apparel'
+  'Apparel',
+  'Storage'
 ]
 
 25.times do
@@ -34,7 +35,7 @@ categories = [
     p = Product.create(
       price: Faker::Commerce.price,
       description: Faker::Commerce.product_name,
-      category: Faker::Commerce.department,
+      category: categories.sample,
       sold: sold,
       seller_id: s.id
   )

@@ -11,7 +11,6 @@ const ProductsForSale = () => {
   const normalizeRawData = (rawData) => {
     const sellerIDs = rawData.map((rd)=> rd.seller_id)
     const uniqueIDs = [...new Set(sellerIDs)]
-    console.log(uniqueIDs)
     return uniqueIDs.map((id)=> {
       let products = rawData.filter((p)=> p.seller_id === id)
       let cleanedProducts = products.map((p)=> {
@@ -34,8 +33,6 @@ const ProductsForSale = () => {
     try {
       let res = await axios.get("/api/products")
       let normalizedData = normalizeRawData(res.data)
-      console.log(res.data)
-      console.log(normalizedData)
       setSellerProperties(normalizedData)
     } catch(err) {
       alert("Error occurred in getProductProperties")
@@ -44,7 +41,6 @@ const ProductsForSale = () => {
 
   const renderSellerProperties = () => {
     return sellerProperties.map(p => {
-      console.log(p.id)
       return <Seller key={p.id} {...p} />
     })
   }

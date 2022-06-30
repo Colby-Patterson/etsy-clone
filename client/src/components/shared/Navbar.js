@@ -13,8 +13,11 @@ const Navbar = () => {
           </Link>
           <li onClick={logout}>Log Out</li>
           <Link to='/productsforsale'>
-            Products For Sale
+            <li>Products For Sale</li>
           </Link>
+          <Link to='categories'>
+            <li>Categories</li>
+            </Link>
         </>
       )
     } else {

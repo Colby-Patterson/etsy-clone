@@ -1,7 +1,9 @@
 import React from "react";
 import { Table } from "semantic-ui-react";
 
-const ProductsTable = ({products}) => (
+const ProductsTable = ({products}) => {
+
+  return (
   <Table celled>
     <Table.Header>
       <Table.Row>
@@ -23,6 +25,7 @@ const ProductsTable = ({products}) => (
       })}
     </Table.Body>
   </Table>
-)
+  )
+}
 
 export default ProductsTable
